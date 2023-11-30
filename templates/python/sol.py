@@ -8,7 +8,7 @@ import itertools as itt
 import functools as ft
 
 
-with PuzzleContext(year=2023, day=${DAY}) as ctx:
+with PuzzleContext(year=${YEAR}, day=${DAY}) as ctx:
     ans1, ans2 = None, None
 
     ctx.submit(1, str(ans1) if ans1 else None)

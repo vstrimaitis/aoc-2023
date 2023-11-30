@@ -5,7 +5,8 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
-export DAY=$1
+export DAY="$1"
+export YEAR="2023"
 DAY_FORMATTED=$(printf "%02d" $DAY)
 TEMPLATES_FOLDER="templates"
 INPUT_FILE="inputs/$DAY_FORMATTED.txt"
@@ -40,3 +41,7 @@ for filename in $PYTHON_TARGET_FOLDER/*; do
     envsubst < $filename > $tmpfile
     mv $tmpfile $filename
 done
+
+# fetch examples
+cd $PYTHON_TARGET_FOLDER
+python fetch_examples.py
