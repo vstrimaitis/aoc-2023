@@ -10,9 +10,9 @@ import functools as ft
 
 @dataclass
 class Draw:
-    blue: int
-    red: int
-    green: int
+    blue: int = 0
+    red: int = 0
+    green: int = 0
 
     @classmethod
     def from_str(cls, s: str) -> Draw:
@@ -21,11 +21,7 @@ class Draw:
             for cnt_descr in s.split(", ")
             if (parts := cnt_descr.split(" "))
         }
-        return Draw(
-            blue=counts.get("blue", 0),
-            red=counts.get("red", 0),
-            green=counts.get("green", 0)
-        )
+        return Draw(**counts)
     
     @property
     def power(self) -> int:
@@ -53,7 +49,7 @@ class Game:
                 blue=max(a.blue, b.blue),
             ),
             self.draws,
-            Draw(0, 0, 0)
+            Draw()
         )
 
 
