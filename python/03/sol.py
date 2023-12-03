@@ -23,14 +23,14 @@ class Number:
     adjacent_symbols: list[Symbol] = field(default_factory=lambda: [])
 
     @classmethod
-    def from_position(cls, grid: list[str], row: int, col: int, value: int) -> Number:
-        coords = (row, col)
-        col_end = col+len(str(value))-1
-        number_coords = set([(row, j) for j in range(col, col_end+1)])
+    def from_position(cls, grid: list[str], row: int, col_range: Tuple[int, int], value: int) -> Number:
+        col_start, col_end = col_range
+        coords = (row, col_start)
+        number_coords = set([(row, j) for j in range(col_start, col_end+1)])
         adj_coords = [
             (i, j)
             for i in range(row-1, row+2)
-            for j in range(col-1, col_end+2)
+            for j in range(col_start-1, col_end+2)
             if (
                 0 <= i < len(grid) and
                 0 <= j < len(grid[i]) and
@@ -48,7 +48,7 @@ def extract_numbers(grid: list[str]) -> list[Number]:
     nums = []
     for i, line in enumerate(grid):
         for m in re.finditer(r"\d+", line):
-            nums.append(Number.from_position(grid, i, m.span()[0], int(m.group(0))))
+            nums.append(Number.from_position(grid, i, m.span(), int(m.group(0))))
     return nums
 
 with PuzzleContext(year=2023, day=3) as ctx:
