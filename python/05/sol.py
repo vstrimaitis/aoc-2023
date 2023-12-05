@@ -129,7 +129,7 @@ def part_2(inp: Input) -> int:
 
 with PuzzleContext(year=2023, day=5) as ctx:
     ans1 = part_1(ctx.data)
-    ans2 = part_2(Input.parse(ctx.data))
-
     ctx.submit(1, str(ans1) if ans1 else None)
+
+    ans2 = part_2(Input.parse(ctx.data))
     ctx.submit(2, str(ans2) if ans2 else None)
