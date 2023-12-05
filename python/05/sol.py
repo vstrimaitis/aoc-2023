@@ -1,3 +1,4 @@
+from __future__ import annotations
 from collections import *
 from typing import *
 from heapq import *
@@ -8,75 +9,127 @@ import itertools as itt
 import functools as ft
 import re
 
-
-with PuzzleContext(year=2023, day=5) as ctx:
-    ans1, ans2 = None, None
-
-    gs = ctx.groups
-    seeds_group = gs[0]
-    seeds = [int(x) for x in re.findall(r"\d+", seeds_group)]
-    seeds_orig = seeds.copy()
-    
-    # assume correct order
-    seeds = seeds_orig.copy()
-    for g in gs[1:]:
-        lines = g.split("\n")
-        maps = []
-        for l in lines[1:]:
-            maps.append([int(x) for x in l.split(" ")])
+def part_1(data: str) -> int:
+    seeds_str, mappings_str = data.split("\n\n", 1)
+    seeds = [int(x) for x in re.findall(r"\d+", seeds_str)]
+    for s in mappings_str.split("\n\n"):
+        lines = s.split("\n")
         for i in range(len(seeds)):
-            for (lo_dst, lo_src, l) in maps:
-                if lo_src <= seeds[i] <= lo_src+l-1:
+            for l in lines[1:]:
+                lo_dst, lo_src, cnt = [int(x) for x in l.split(" ")]
+                if lo_src <= seeds[i] <= lo_src + cnt - 1:
                     d = seeds[i] - lo_src
                     seeds[i] = lo_dst + d
                     break
+    return min(seeds)
 
-    ans1 = min(seeds)
+@dataclass
+class Range:
+    left: int
+    right: int
 
-    seeds = seeds_orig.copy()
-    seeds = [(seeds[i], seeds[i+1]) for i in range(0, len(seeds), 2)]
-    for g in gs[1:]:
-        lines = g.split("\n")
-        maps = []
+    @classmethod
+    def from_start_and_len(cls, start: int, length: int) -> Range:
+        return Range(
+            left=start,
+            right=start+length-1,
+        )
+    
+    def __len__(self) -> int:
+        return self.right - self.left + 1
+    
+    def contains(self, other: Range) -> bool:
+        return self.left <= other.left and other.right <= self.right
+
+    def intersects(self, other: Range) -> bool:
+        if other.right < self.left or self.right < other.left:
+            return False
+        return True
+    
+    def shift_by(self, amount: int) -> Range:
+        return Range(
+            left=self.left + amount,
+            right=self.right + amount,
+        )
+    
+    def split_against(self, other: Range) -> list[Range]:
+        a = Range(
+            left=min(self.left, other.left),
+            right=max(self.left, other.left)-1,
+        )
+        b = Range(
+            left=max(self.left, other.left),
+            right=min(self.right, other.right),
+        )
+        c = Range(
+            left=min(self.right, other.right)+1,
+            right=max(self.right, other.right),
+        )
+        return [
+            x for x in [a, b, c]
+            if self.contains(x)
+        ]
+
+@dataclass
+class Map:
+    name: str
+    ranges: list[Tuple[Range, Range]]
+
+    @classmethod
+    def parse(cls, data: str) -> Map:
+        lines = data.split("\n")
+        name = lines[0].split(" ")[0]
+        ranges = []
         for l in lines[1:]:
-            maps.append([int(x) for x in l.split(" ")])
+            dst_left, src_left, cnt = [int(x) for x in l.split(" ")]
+            src_range = Range.from_start_and_len(src_left, cnt)
+            dst_range = Range.from_start_and_len(dst_left, cnt)
+            ranges.append((src_range, dst_range))
+        return Map(name, ranges)
+
+@dataclass
+class Input:
+    seed_ranges: list[Range]
+    mappings: list[Map]
+
+    @classmethod
+    def parse(cls, data: str) -> Input:
+        seeds_str, maps_str = data.split("\n\n", 1)
+        seed_nums = [int(x) for x in re.findall(r"\d+", seeds_str)]
+        return Input(
+            seed_ranges=[
+                Range.from_start_and_len(seed_nums[i], seed_nums[i+1])
+                for i in range(0, len(seed_nums), 2)
+            ],
+            mappings=list(map(Map.parse, maps_str.split("\n\n"))),
+        )
+
+def part_2(inp: Input) -> int:
+    seeds = inp.seed_ranges.copy()
+    for mapping in inp.mappings:
         new_seeds = []
-        for (seed_lo, seed_l) in seeds:
+        for seed in seeds:
             added = False
-            for (lo_dst, lo_src, l) in maps:
-                seed_left = seed_lo
-                seed_right = seed_lo + seed_l - 1
-                src_left = lo_src
-                src_right = lo_src + l - 1
-                if src_right < seed_left or seed_right < src_left:
+            for (src, dst) in mapping.ranges:
+                if not seed.intersects(src):
                     continue
-                a = (
-                    min(seed_left, src_left),
-                    max(seed_left, src_left)-1,
-                )
-                b = (
-                    max(seed_left, src_left),
-                    min(seed_right, src_right),
-                )
-                c = (
-                    min(seed_right, src_right)+1,
-                    max(seed_right, src_right),
-                )
-                delta = lo_dst - lo_src
-                for r in [a, b, c]:
-                    if seed_left <= r[0] and r[1] <= seed_right:
-                        if src_left <= r[0] and r[1] <= src_right:
-                            new_seeds.append((r[0]+delta, r[1]-r[0]+1))
-                        else:
-                            new_seeds.append((r[0], r[1]-r[0]+1))
+                for r in seed.split_against(src):
+                    if src.contains(r):
+                        new_seeds.append(r.shift_by(dst.left-src.left))
+                    else:
+                        new_seeds.append(r)
                 added = True
                 break
             if not added:
-                new_seeds.append((seed_lo, seed_l))
+                new_seeds.append(seed)
         seeds = new_seeds
-        print("len: ", len(seeds))
-        # print(seeds)
+        print(f"number of seeds: {len(seeds)}")
+    return min(s.left for s in seeds)
 
-    ans2 = min([s[0] for s in seeds])
+
+with PuzzleContext(year=2023, day=5) as ctx:
+    ans1 = part_1(ctx.data)
+    ans2 = part_2(Input.parse(ctx.data))
+
     ctx.submit(1, str(ans1) if ans1 else None)
     ctx.submit(2, str(ans2) if ans2 else None)
