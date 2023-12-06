@@ -26,11 +26,11 @@ class Number:
     def from_position(cls, grid: list[str], row: int, col_range: Tuple[int, int], value: int) -> Number:
         col_start, col_end = col_range
         coords = (row, col_start)
-        number_coords = set([(row, j) for j in range(col_start, col_end+1)])
+        number_coords = set([(row, j) for j in range(col_start, col_end)])
         adj_coords = [
             (i, j)
             for i in range(row-1, row+2)
-            for j in range(col_start-1, col_end+2)
+            for j in range(col_start-1, col_end+1)
             if (
                 0 <= i < len(grid) and
                 0 <= j < len(grid[i]) and
