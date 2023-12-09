@@ -23,11 +23,7 @@ def predict_future(arr: list[int]) -> int:
     return sum(dl[-1] for dl in dlists)
 
 def predict_past(arr: list[int]) -> int:
-    dlists = calc_diff_lists(arr)
-    return ft.reduce(
-        lambda acc, x: x - acc,
-        reversed([dl[0] for dl in dlists])
-    )
+    return predict_future(arr[::-1])
 
 with PuzzleContext(year=2023, day=9) as ctx:
 
