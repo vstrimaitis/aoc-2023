@@ -18,20 +18,22 @@ def calc_diff_lists(arr: list[int]) -> list[list[int]]:
         )
     return lists
 
+def predict_future(arr: list[int]) -> int:
+    dlists = calc_diff_lists(arr)
+    return sum(dl[-1] for dl in dlists)
+
+def predict_past(arr: list[int]) -> int:
+    dlists = calc_diff_lists(arr)
+    return ft.reduce(
+        lambda acc, x: x - acc,
+        reversed([dl[0] for dl in dlists])
+    )
+
 with PuzzleContext(year=2023, day=9) as ctx:
 
     histories = lmap(ints, ctx.nonempty_lines)
-    ans1 = sum(
-        sum(dlist[-1] for dlist in calc_diff_lists(hist))
-        for hist in histories
-    )
+    ans1 = sum(map(predict_future, histories))
     ctx.submit(1, str(ans1))
 
-    ans2 = sum(
-        ft.reduce(
-            lambda acc, x: x - acc,
-            reversed([dlist[0] for dlist in calc_diff_lists(hist)])
-        )
-        for hist in histories
-    )
+    ans2 = sum(map(predict_past, histories))
     ctx.submit(2, str(ans2))
