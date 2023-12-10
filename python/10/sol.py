@@ -86,11 +86,12 @@ class Grid:
         return cycle_nodes
     
     def find_inner_nodes(self, cycle_nodes: list[Tuple[int, int]], mark: bool = True) -> list[Tuple[int, int]]:
+        cycle = set(cycle_nodes)
         ans = []
         for i in range(g.n_rows):
             is_inside = False
             for j in range(g.n_cols):
-                if (i, j) in cycle_nodes:
+                if (i, j) in cycle:
                     if g.cells[i][j] in "|JL":
                         is_inside = not is_inside
                 else:
