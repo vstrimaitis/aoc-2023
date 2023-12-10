@@ -127,4 +127,16 @@ with PuzzleContext(year=2023, day=10) as ctx:
     ans2 = len(g.find_inner_nodes(cycle))
     ctx.submit(2, str(ans2))
 
+    # Using Pick's theorem:
+    # area = 0
+    # for i in range(len(cycle)):
+    #     x1, y1 = cycle[i]
+    #     x2, y2 = cycle[(i+1)%len(cycle)]
+    #     d = x1*y2 - x2*y1
+    #     area += d
+    # area = abs(area // 2)
+    # boundary_pt_count = len(cycle)
+    # inner_pt_count = area - boundary_pt_count//2+1
+    # print(inner_pt_count)
+
     print(g)
