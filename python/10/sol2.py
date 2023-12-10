@@ -146,17 +146,11 @@ with PuzzleContext(year=2023, day=10) as ctx:
     ans2 = 0
     for i in range(n):
         for j in range(m):
-            is_on_cycle = False
-            is_inner = False
-            for di in range(3):
-                for dj in range(3):
-                    coords = (3*i+di, 3*j+dj)
-                    if coords in cycle_coords:
-                        is_on_cycle = True
-                    c = new_grid[coords[0]][coords[1]]
-                    if c == "I":
-                        is_inner = True
-            if is_inner and not is_on_cycle:
+            ii = 3*i + 1
+            jj = 3*j + 1
+            if (ii, jj) in cycle_coords:
+                continue
+            if new_grid[ii][jj] == "I":
                 ans2 += 1
     ctx.submit(2, str(ans2))
 
