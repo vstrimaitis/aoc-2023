@@ -46,7 +46,7 @@ EXPANSIONS = {
     ],
     "S": [
         "...",
-        ".#.",
+        ".S.",
         "..."
     ],
 }
@@ -86,6 +86,11 @@ def find_cycle(
             continue
         find_cycle(g, (ii, jj), goal, curr, ans)
 
+def print_grid(g: list[list[str]], msg: str = "") -> None:
+    if msg:
+        print(msg + ":")
+    print("\n".join(["".join(row) for row in g]))
+    print()
 
 
 with PuzzleContext(year=2023, day=10) as ctx:
@@ -103,9 +108,9 @@ with PuzzleContext(year=2023, day=10) as ctx:
             for di in range(3):
                 for dj in range(3):
                     new_grid[3*i+di][3*j+dj] = exp[di][dj]
+    print_grid(new_grid, "after expansion")
 
     assert start_pos is not None
-
     i, j = start_pos
     ends = []
     for di, dj in DIRS_4:
@@ -113,20 +118,29 @@ with PuzzleContext(year=2023, day=10) as ctx:
             ends.append((i+di, j+dj))
     for i, j in ends:
         new_grid[i][j] = "#"
+    new_grid[start_pos[0]][start_pos[1]] = "#"
+
+    print_grid(new_grid, "after inferring starting pipe type")
+    
     cycle = [start_pos]
     find_cycle(new_grid, ends[0], ends[1], start_pos, cycle)
 
     ans1 = len(cycle) // 3 // 2
-    ctx.submit(1, str(ans1))
+    # ctx.submit(1, str(ans1))
 
     # mark the cells that form a cycle with "C"
     for i, j in cycle:
         new_grid[i][j] = "C"
 
+    print_grid(new_grid, "after finding and marking the cycle")
+
     # flood fill from the outside - marks all outside cells with "O"
     fill(new_grid, 0, 0, "O", walls={"C", "#"})
+    print_grid(new_grid, "after flood-filling outer cells")
+
     # flood fill on the cycle - marks all cells within (or on) the cycle with "I"
     fill(new_grid, start_pos[0], start_pos[1], "I", walls={"O"})
+    print_grid(new_grid, "after flood-filling inner cells")
 
     cycle_coords = set(cycle)
     ans2 = 0
