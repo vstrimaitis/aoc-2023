@@ -120,7 +120,7 @@ with PuzzleContext(year=2023, day=10) as ctx:
     g = Grid.from_str(ctx.data)
     start_pos, start_dir = g.find_and_infer_start()
     cycle = g.find_cycle(start_pos, start_dir, clean_up=True)
-    
+
     ans1 = len(cycle) // 2
     ctx.submit(1, str(ans1))
 
@@ -139,4 +139,4 @@ with PuzzleContext(year=2023, day=10) as ctx:
     # inner_pt_count = area - boundary_pt_count//2+1
     # print(inner_pt_count)
 
-    print(g)
+    # print(g)
