@@ -97,6 +97,7 @@ with PuzzleContext(year=2023, day=10) as ctx:
     grid = lmap(list, ctx.nonempty_lines)
     n = len(grid)
     m = len(grid[0])
+    print_grid(grid, "input")
     
     new_grid = [["?" for _ in range(3*m)] for _ in range(3*n)]
     start_pos = None
