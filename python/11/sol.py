@@ -34,9 +34,6 @@ def calc(galaxy_positions: list[Tuple[int, int]], empty_rows: set[int], empty_co
 
     return ans
 
-
-    pass
-
 with PuzzleContext(year=2023, day=11) as ctx:
     ans1, ans2 = None, None
     g, n, m = to_grid(ctx.data)
