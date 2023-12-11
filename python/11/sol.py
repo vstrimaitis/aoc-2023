@@ -7,8 +7,35 @@ from utils import *
 import itertools as itt
 import functools as ft
 
-def find_sp(g: list[list[str]], src, dst):
-    return abs(dst[0]-src[0]) + abs(dst[1]-src[1])
+def count(values: set[int], a: int, b: int) -> int:
+    if a > b:
+        a, b = b, a
+    ans = 0
+    for x in values:
+        if a <= x <= b:
+            ans += 1
+    return ans
+
+def calc(galaxy_positions: list[Tuple[int, int]], empty_rows: set[int], empty_cols: set[int], expansion_multiplier: int) -> int:
+    ans = 0
+    for i, a in enumerate(galaxy_positions):
+        for j, b in enumerate(galaxy_positions):
+            if j <= i:
+                continue
+            empty_r = count(empty_rows, a[0], b[0])
+            diff_r = abs(a[0] - b[0])
+            dist_r = diff_r + empty_r*(expansion_multiplier-1)
+
+            empty_c = count(empty_cols, a[1], b[1])
+            diff_c = abs(a[1] - b[1])
+            dist_c = diff_c + empty_c*(expansion_multiplier-1)
+
+            ans += dist_r + dist_c
+
+    return ans
+
+
+    pass
 
 with PuzzleContext(year=2023, day=11) as ctx:
     ans1, ans2 = None, None
@@ -24,46 +51,14 @@ with PuzzleContext(year=2023, day=11) as ctx:
         if all(g[i][j] == "." for i in range(n)):
             empty_cols.add(j)
 
-    # gg = []
-    # for i in range(n):
-    #     r = []
-    #     for j in range(m):
-    #         r.append(g[i][j])
-    #         if j in empty_cols:
-    #             r.append(g[i][j])
-    #     gg.append(r)
-    #     if i in empty_rows:
-    #         gg.append(r.copy())
-            
-    # g = gg.copy()
-    # n = len(g)
-    # m = len(g[0])
-
     galaxies = []
     for i in range(n):
         for j in range(m):
             if g[i][j] == "#":
                 galaxies.append((i, j))
 
-    MULT = 1000000
-    ans1 = 0
-    galaxies = sorted(galaxies) 
-    for a in galaxies:
-        for b in galaxies:
-            if a < b:
-                row_range = (min(a[0], b[0]), max(a[0], b[0]))
-                col_range = (min(a[1], b[1]), max(a[1], b[1]))
-                cnt_r = 0
-                for i in empty_rows:
-                    if row_range[0] <= i <= row_range[1]:
-                        cnt_r += 1
-                        
-                cnt_c = 0
-                for j in empty_cols:
-                    if col_range[0] <= j <= col_range[1]:
-                        cnt_c += 1
-                
-                dr = abs(a[0]-b[0])
-                dc = abs(a[1]-b[1])
-                ans1 += cnt_r*MULT+(dr-cnt_r) + cnt_c*MULT+(dc-cnt_c)
-    ctx.submit(2, str(ans1))
+    ans1 = calc(galaxies, empty_rows, empty_cols, 2)
+    ctx.submit(1, str(ans1))
+
+    ans2 = calc(galaxies, empty_rows, empty_cols, 1000000)
+    ctx.submit(2, str(ans2))
