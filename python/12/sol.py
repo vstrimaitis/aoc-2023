@@ -7,7 +7,7 @@ from utils import *
 import itertools as itt
 import functools as ft
 
-def solve2(s: str, cnts: list[int]) -> int:
+def solve(s: str, cnts: list[int]) -> int:
     # add one '.' to make conditions simpler
     s += "."
     @ft.lru_cache(maxsize=None)
@@ -47,13 +47,13 @@ with PuzzleContext(year=2023, day=12) as ctx:
     inputs = parse(ctx.nonempty_lines)
     
     ans1 = sum(
-        solve2(pattern, cnts)
+        solve(pattern, cnts)
         for pattern, cnts in inputs
     )
     ctx.submit(1, str(ans1))
 
     ans2 = sum(
-        solve2("?".join([pattern]*5), cnts*5)
+        solve("?".join([pattern]*5), cnts*5)
         for pattern, cnts in inputs
     )
     ctx.submit(2, str(ans2))
