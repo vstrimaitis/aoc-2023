@@ -7,60 +7,47 @@ from utils import *
 import itertools as itt
 import functools as ft
 
-def slide_n(g, n, m):
-    for i in range(n):
-        for j in range(m):
-            if g[i][j] == "O":
-                for ii in reversed(range(0, i)):
-                    if g[ii][j] == ".":
-                        g[ii][j] = "O"
-                        g[ii+1][j] = "."
-                    else:
-                        break
+Grid = list[list[str]]
+Height = int
+Width = int
+GridDef = tuple[Grid, Height, Width]
+Direction = Literal["N", "W", "S", "E"]
 
-def slide_s(g, n, m):
-    for i in reversed(range(n)):
-        for j in range(m):
-            if g[i][j] == "O":
-                for ii in range(i+1, n):
-                    if g[ii][j] == ".":
-                        g[ii][j] = "O"
-                        g[ii-1][j] = "."
-                    else:
-                        break
+def rotate_cw(g: Grid, n: Height, m: Width) -> GridDef:
+    n, m = m, n
+    g = [list(reversed(col)) for col in zip(*g)]
+    return g, n, m
 
-def slide_w(g, n, m):
+def rotate_ccw(g: Grid, n: Height, m: Width) -> GridDef:
+    for _ in range(3):
+        g, n, m = rotate_cw(g, n, m)
+    return g, n, m
+
+def slide_n(g: Grid, n: Height, m: Width) -> Grid:
     for j in range(m):
+        avail_spot = 0
         for i in range(n):
-            if g[i][j] == "O":
-                for jj in reversed(range(0, j)):
-                    if g[i][jj] == ".":
-                        g[i][jj] = "O"
-                        g[i][jj+1] = "."
-                    else:
-                        break
+            if g[i][j] == "#":
+                avail_spot = i + 1
+            elif g[i][j] == "O":
+                g[avail_spot][j], g[i][j] = g[i][j], g[avail_spot][j]
+                avail_spot += 1
+    return g
 
-def slide_e(g, n, m):
-    for j in reversed(range(m)):
-        for i in range(n):
-            if g[i][j] == "O":
-                for jj in range(j+1, m):
-                    if g[i][jj] == ".":
-                        g[i][jj] = "O"
-                        g[i][jj-1] = "."
-                    else:
-                        break
-
-def slide(g, n, m, d):
+def slide(g: Grid, n: Height, m: Width, d: Direction) -> Grid:
+    def delegate(to: Direction) -> Grid:
+        g2, n2, m2 = rotate_cw(g, n, m)
+        g2 = slide(g2, n2, m2, to)
+        g2, _, _ = rotate_ccw(g2, n2, m2)
+        return g2
     match d:
-        case "N": f = slide_n
-        case "S": f = slide_s
-        case "W": f = slide_w
-        case "E": f = slide_e
+        case "N": return slide_n([r.copy() for r in g], n, m)
+        case "W": return delegate("N")
+        case "S": return delegate("W")
+        case "E": return delegate("S")
         case _: assert False
-    f(g,n,m)
 
-def calc(g, n, m):
+def calc_total_load(g: Grid, n: Height, m: Width) -> int:
     ans = 0
     for i in range(n):
         for j in range(m):
@@ -68,42 +55,47 @@ def calc(g, n, m):
                 ans += n-i
     return ans
 
-with PuzzleContext(year=2023, day=14) as ctx:
-    ans1, ans2 = None, None
+def solve1(g: Grid, n: Height, m: Width) -> int:
+    g = slide(g, n, m, "N")
+    return calc_total_load(g, n, m)
 
-    orig_g, n, m = to_grid(ctx.data)
-    g = orig_g.copy()
-    slide(g, n, m, "N")
-    ans1 = 0
-    for i in range(n):
-        for j in range(m):
-            if g[i][j] == "O":
-                ans1 += n-i
-    ctx.submit(1, str(ans1) if ans1 else None)
-
-    g = orig_g.copy()
+def solve2(g: Grid, n: Height, m: Width, total_cycles: int) -> int:
+    def do_cycle(gr: Grid) -> Grid:
+        for d in ("N", "W", "S", "E"):
+            gr = slide(gr, n, m, d)
+        return gr
+    
+    def to_str(g: Grid) -> str:
+        return "\n".join("".join(r) for r in g)
+    
     seen = dict()
-    cnt = 0
-    NEED = 1000000000
-    seen["\n".join("".join(row) for row in g)] = 0
+    loads = []
+    n_cycles = 0
+
+    seen[to_str(g)] = 0
+    loads.append(calc_total_load(g, n, m))
+
     while True:
-        for d in "NWSE":
-            slide(g,n,m,d)
-        s = "\n".join("".join(row) for row in g)
+        g = do_cycle(g)
+        s = to_str(g)
         if s in seen:
             break
-        cnt += 1
-        seen[s] = cnt
+        n_cycles += 1
+        seen[s] = n_cycles
+        loads.append(calc_total_load(g, n, m))
+    loop_start = seen[to_str(g)]
+    loop_end = n_cycles
+    loop_len = loop_end - loop_start + 1
+    
+    n_cycles_left = (total_cycles - loop_start) % loop_len
+    target_dist = loop_start + n_cycles_left
+    return loads[target_dist]
 
-    x = cnt
-    y = seen["\n".join("".join(row) for row in g)]
-    l = abs(x-y)+1
-    LEFT = (NEED - x - 1) % l
-    i = y + LEFT
-    for k, v in seen.items():
-        if v == i:
-            g, n, m = to_grid(k)
-            ans2 = calc(g, n, m)
-            break
+with PuzzleContext(year=2023, day=14) as ctx:
+    g, n, m = to_grid(ctx.data)
 
-    ctx.submit(2, str(ans2) if ans2 else None)
+    ans1 = solve1(g, n, m)
+    ctx.submit(1, str(ans1))
+    
+    ans2 = solve2(g, n, m, 1_000_000_000)
+    ctx.submit(2, str(ans2))
