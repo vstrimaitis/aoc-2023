@@ -7,100 +7,76 @@ from utils import *
 import itertools as itt
 import functools as ft
 
-def solve1(g, n, m):
-    dists = dict()
+Grid = list[list[int]]
+State = tuple[
+    int,  # row
+    int,  # column
+    str,  # last direction
+    int,  # how many steps were taken using the last direction
+]
+DELTAS = {
+    ">": (0, 1),
+    "<": (0, -1),
+    "^": (-1, 0),
+    "v": (1, 0),
+}
+
+def get_allowed_directions(prev_dir: str) -> list[str]:
+    if prev_dir in "><":
+        return ["^", "v"]
+    elif prev_dir in "^v":
+        return [">", "<"]
+    elif prev_dir == "?":
+        return [">", "<", "^", "v"]
+    assert False, f"invalid dir {prev_dir}"
+
+
+def solve(g: Grid, min_steps: int, max_steps: int) -> int:
+    n = len(g)
+    m = len(g[0])
+
+    dists: dict[State, int] = defaultdict(lambda: 10**100)
     pq = []
     heapify(pq)
-    heappush(pq, (0, 0, 0, "?", 0))
-    dists[(0, 0, "?", 0)] = 0
-    while len(pq) > 0:
-        i, j, d, prev_dir, prev_cnt = heappop(pq)
-        if d > dists[(i, j, prev_dir, prev_cnt)]:
-            continue
-        dirs = ["^", "v", "<", ">"]
-        match prev_dir:
-            case "<": dirs.remove(">")
-            case ">": dirs.remove("<")
-            case "^": dirs.remove("v")
-            case "v": dirs.remove("^")
-        for dd in dirs:
-            match dd:
-                case "^": ii, jj = i-1, j
-                case "v": ii, jj = i+1, j
-                case ">": ii, jj = i, j+1
-                case "<": ii, jj = i, j-1
-                case _: assert False
-            if dd == prev_dir:
-                new_cnt = prev_cnt + 1
-            else:
-                new_cnt = 1
-            if new_cnt > 3:
-                continue
-            if 0 <= ii < n and 0 <= jj < m:
-                new_d = d + int(g[ii][jj])
-                if (ii, jj, dd, new_cnt) not in dists or new_d < dists[(ii, jj, dd, new_cnt)]:
-                    dists[(ii, jj, dd, new_cnt)] = new_d
-                    heappush(pq, (ii, jj, new_d, dd, new_cnt))
 
-    ans = min(dists[k] for k in dists.keys() if (k[0], k[1]) == (n-1, m-1))
-    return ans
+    start_state = (0, 0, "?", 0)
+    heappush(pq, (0, start_state))
+    dists[start_state] = 0
 
-def solve2(g, n, m):
-    dists = dict()
-    pq = []
-    heapify(pq)
-    heappush(pq, (0, 0, 0, "?", 0))
-    dists[(0, 0, "?", 0)] = 0
-    while len(pq) > 0:
-        i, j, d, prev_dir, prev_cnt = heappop(pq)
-        if d > dists[(i, j, prev_dir, prev_cnt)]:
+    while pq:
+        dist, state = heappop(pq)
+        i, j, prev_dir, _ = state
+        if dist > dists[state]:
             continue
-        dirs = ["^", "v", "<", ">"]
-        match prev_dir:
-            case "<":
-                dirs.remove(">")
-                dirs.remove("<")
-            case ">":
-                dirs.remove("<")
-                dirs.remove(">")
-            case "^":
-                dirs.remove("v")
-                dirs.remove("^")
-            case "v":
-                dirs.remove("^")
-                dirs.remove("v")
-        for dd in dirs:
-            match dd:
-                case "^": di, dj = -1, 0
-                case "v": di, dj = 1, 0
-                case ">": di, dj = 0, 1
-                case "<": di, dj = 0, -1
-                case _: assert False
-                
-            s = 0
-            ii = i
-            jj = j
-            for cnt in range(1, 11):
+        if i == n-1 and j == m-1:
+            return dist
+        dirs = get_allowed_directions(prev_dir)
+        for d in dirs:
+            di, dj = DELTAS[d]
+            extra_dist = 0
+            ii, jj = i, j
+            for cnt in range(1, max_steps+1):
                 ii += di
                 jj += dj
-                if 0 <= ii < n and 0 <= jj < m:
-                    s += int(g[ii][jj])
-                    if cnt >= 4:
-                        new_d = d + s
-                        if (ii, jj, dd, cnt) not in dists or new_d < dists[(ii, jj, dd, cnt)]:
-                            dists[(ii, jj, dd, cnt)] = new_d
-                            heappush(pq, (ii, jj, new_d, dd, cnt))
+                if not (0 <= ii < n and 0 <= jj < m):
+                    break
+                extra_dist += g[ii][jj]
+                if cnt < min_steps:
+                    continue
+                new_dist = dist + extra_dist
+                new_state = (ii, jj, d, cnt)
+                if new_dist < dists[new_state]:
+                    dists[new_state] = new_dist
+                    heappush(pq, (new_dist, new_state))
 
-    ans = min(dists[k] for k in dists.keys() if (k[0], k[1]) == (n-1, m-1))
-    return ans
+    assert False, "didn't reach goal"
+
 
 with PuzzleContext(year=2023, day=17) as ctx:
-    ans1, ans2 = None, None
+    g = list([lmap(int, list(l)) for l in ctx.nonempty_lines])
 
-    g, n, m = to_grid(ctx.data)
-    ans1 = solve1(g, n, m)
+    ans1 = solve(g, min_steps=1, max_steps=3)
+    ctx.submit(1, str(ans1))
 
-    ctx.submit(1, str(ans1) if ans1 else None)
-
-    ans2 = solve2(g, n, m)
-    ctx.submit(2, str(ans2) if ans2 else None)
+    ans2 = solve(g, min_steps=4, max_steps=10)
+    ctx.submit(2, str(ans2))
