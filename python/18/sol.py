@@ -6,78 +6,103 @@ from puzzle import PuzzleContext
 from utils import *
 import itertools as itt
 import functools as ft
+from enum import Enum
 
-DELTAS = {
-    "L": (0, -1),
-    "R": (0, 1),
-    "U": (-1, 0),
-    "D": (1, 0),
-}
+@dataclass
+class DirectionMetadata:
+    symbol: str
+    index: int
+    delta: tuple[int, int]
 
-def dfs(g, i, j):
-    if g[(i, j)] == "#":
-        return
-    g[(i,j)] = "#"
-    for di, dj in DIRS_4:
-        dfs(g, i+di, j+dj)
+class Direction(Enum):
+    RIGHT = DirectionMetadata("R", 0, (0, 1))
+    DOWN = DirectionMetadata("D", 1, (1, 0))
+    LEFT = DirectionMetadata("L", 2, (0, -1))
+    UP = DirectionMetadata("U", 3, (-1, 0))
+
+@dataclass
+class Instruction:
+    direction: Direction
+    distance: int
+
+def dir_from_str(s: str) -> Direction:
+    for d in Direction:
+        if d.value.symbol == s:
+            return d
+    assert False, f"invalid direction {s}"
+
+def dir_from_int(s: int) -> Direction:
+    for d in Direction:
+        if d.value.index == s:
+            return d
+    assert False, f"invalid direction number {s}"
+
+def parse_line(line: str, part: Literal[1, 2]) -> Instruction:
+    parts = line.split(" ")
+    if part == 1:
+        return Instruction(
+            direction=dir_from_str(parts[0]),
+            distance=int(parts[1])
+        )
+    hex_code = parts[2][2:-1]
+    hex_dist = hex_code[:5]
+    hex_dir = int(hex_code[5])
+    return Instruction(
+        direction=dir_from_int(hex_dir),
+        distance=int(hex_dist, 16),
+    )
+
+def parse(s: str, part: Literal[1, 2]) -> list[Instruction]:
+    return list(map(lambda line: parse_line(line, part), s.split("\n")))
+
+class Polygon:
+    def __init__(self, points: list[tuple[int, int]]):
+        self._pts = points
+
+    @property
+    def area(self) -> int:
+        ans = 0
+        n = len(self._pts)
+        for i in range(n):
+            x1, y1 = self._pts[i]
+            x2, y2 = self._pts[(i+1)%n]
+            ans += x1*y2-x2*y1
+        return abs(ans) // 2
+    
+    @property
+    def n_boundary_points(self) -> int:
+        n = len(self._pts)
+        ans = n
+        for i in range(n):
+            x1, y1 = self._pts[i]
+            x2, y2 = self._pts[(i+1)%n]
+            dx = max(0, abs(x1 - x2) - 1)
+            dy = max(0, abs(y1 - y2) - 1)
+            ans += dx + dy
+        return ans
+
+    @property
+    def n_inner_points(self) -> int:
+        return self.area - self.n_boundary_points // 2 + 1
+    
+    @property
+    def grid_area(self) -> int:
+        return self.n_boundary_points + self.n_inner_points
+
+def solve(instructions: list[Instruction]) -> int:
+    pts = []
+    i, j = 0, 0
+    for instr in instructions:
+        di, dj = instr.direction.value.delta
+        i += di * instr.distance
+        j += dj * instr.distance
+        pts.append((i, j))
+
+    return Polygon(pts).grid_area
 
 with PuzzleContext(year=2023, day=18) as ctx:
-    ans1, ans2 = None, None
+    ans1 = solve(parse(ctx.data, part=1))
+    ctx.submit(1, str(ans1))
 
-    g = defaultdict(lambda: ".")
-    i = 0
-    j = 0
-    g[(i, j)] = "#"
-    for l in ctx.nonempty_lines:
-        d = l[0]
-        cnt = int(l.split(" ")[1])
-        di, dj = DELTAS[d]
-        for _ in range(cnt):
-            i += di
-            j += dj
-            g[(i, j)] = "#"
-    
-
-    # dir_first = ctx.nonempty_lines[0][0]
-    # dir_last = ctx.nonempty_lines[0]
-    dfs(g, 1, 1)
-    ans1 = sum([1 for v in g.values() if v =="#"])
-    print(ans1)
-
-    
-    pts = []
-    i = 0
-    j = 0
-    for l in ctx.nonempty_lines:
-        # d = l[0]
-        # cnt = int(l.split(" ")[1])
-        code = l.split(" ")[2][2:-1]
-        cnt_hex = code[:5]
-        dir_hex = code[-1]
-        d = "RDLU"[int(dir_hex)]
-        cnt = int(cnt_hex, 16)
-        di, dj = DELTAS[d]
-        i += di*cnt
-        j += dj*cnt
-        pts.append((i, j))
-        
-    area = 0
-    for i in range(len(pts)):
-        x1, y1 = pts[i]
-        x2, y2 = pts[(i+1)%len(pts)]
-        area += x1*y2-x2*y1
-    area = abs(area) // 2
-    boundary_pts = len(pts)
-    for i in range(len(pts)):
-        a = pts[i]
-        b = pts[(i+1)%len(pts)]
-        dx = max(0,abs(a[0]-b[0])-1)
-        dy = max(0,abs(a[1]-b[1])-1)
-        boundary_pts += dx+dy
-    print(boundary_pts)
-    inner_pts = area - boundary_pts//2 + 1
-    ans2 = inner_pts + boundary_pts
-    print(ans2)
-
-    # ctx.submit(1, str(ans1) if ans1 else None)
-    # ctx.submit(2, str(ans2) if ans2 else None)
+    ans2 = solve(parse(ctx.data, part=2))
+    ctx.submit(2, str(ans2))
