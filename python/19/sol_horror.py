@@ -91,9 +91,9 @@ def generate_workflow_fn_code(name: str, conditions: list[tuple[str | None, str]
     ])
     clean_lines = []
     for i in range(len(lines)):
-        if lines[i] != "" or (i+1 < len(lines) and lines[i] == "" and lines[i+1] != ""):
+        if lines[i].strip() != "" or (i+1 == len(lines) or lines[i].strip() == "" and lines[i+1].strip() != ""):
             clean_lines.append(lines[i])
-    return "\n".join(lines)
+    return "\n".join(clean_lines)
 
 def generate_code(workflows: dict) -> str:
     lines = [

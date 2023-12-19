@@ -7,7 +7,6 @@ def wkfl_dc(part_ratings: PartRatings) -> int:
     # m<2420:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2419)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2420), part_ratings.m.r))
-    
 
     return ans
 
@@ -18,7 +17,6 @@ def wkfl_jb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2619), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2618)))
     ans += wkfl_vv(temp_ratings)
-    
 
     return ans
 
@@ -118,7 +116,6 @@ def wkfl_cxv(part_ratings: PartRatings) -> int:
     # s<1006:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1005)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1006), part_ratings.s.r))
-    
 
     return ans
 
@@ -162,7 +159,6 @@ def wkfl_lld(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2278)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2279), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -178,7 +174,6 @@ def wkfl_ng(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 610), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 609)))
     ans += wkfl_snx(temp_ratings)
-    
 
     return ans
 
@@ -220,7 +215,6 @@ def wkfl_hrd(part_ratings: PartRatings) -> int:
     # m>2571:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2572), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2571)))
-    
 
     return ans
 
@@ -251,7 +245,6 @@ def wkfl_gp(part_ratings: PartRatings) -> int:
     # s<3337:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3336)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3337), part_ratings.s.r))
-    
 
     return ans
 
@@ -274,7 +267,6 @@ def wkfl_kth(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2225), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2224)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -290,7 +282,6 @@ def wkfl_plr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1292), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1291)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -300,7 +291,6 @@ def wkfl_mzl(part_ratings: PartRatings) -> int:
     # m>2788:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2789), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2788)))
-    
 
     return ans
 
@@ -344,7 +334,6 @@ def wkfl_df(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 126)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 127), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -364,7 +353,6 @@ def wkfl_cjz(part_ratings: PartRatings) -> int:
     # m<3044:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3043)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3044), part_ratings.m.r))
-    
 
     return ans
 
@@ -400,7 +388,6 @@ def wkfl_qlq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 187)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 188), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -446,7 +433,6 @@ def wkfl_kb(part_ratings: PartRatings) -> int:
     # m<3188:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3187)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3188), part_ratings.m.r))
-    
 
     return ans
 
@@ -480,7 +466,6 @@ def wkfl_fl(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2877)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2878), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -499,7 +484,6 @@ def wkfl_pn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2040)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2041), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -515,7 +499,6 @@ def wkfl_tfn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2728)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2729), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -525,7 +508,6 @@ def wkfl_vlb(part_ratings: PartRatings) -> int:
     # s>2382:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2383), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2382)))
-    
 
     return ans
 
@@ -556,7 +538,6 @@ def wkfl_fh(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3514)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3515), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -676,7 +657,6 @@ def wkfl_mf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 571), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 570)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -863,7 +843,6 @@ def wkfl_cvk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 790), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 789)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -874,7 +853,6 @@ def wkfl_fg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1049)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1050), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -918,7 +896,6 @@ def wkfl_sqq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1386)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1387), part_ratings.m.r))
     ans += wkfl_crh(temp_ratings)
-    
 
     return ans
 
@@ -933,7 +910,6 @@ def wkfl_rqp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2126)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2127), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -953,7 +929,6 @@ def wkfl_cpp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 225)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 226), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -969,7 +944,6 @@ def wkfl_ds(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1330), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1329)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1047,7 +1021,6 @@ def wkfl_prn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3240)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3241), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1068,7 +1041,6 @@ def wkfl_cn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1223), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1222)))
     ans += wkfl_cbx(temp_ratings)
-    
 
     return ans
 
@@ -1169,7 +1141,6 @@ def wkfl_xcd(part_ratings: PartRatings) -> int:
     # x<1682:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1681)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1682), part_ratings.x.r))
-    
 
     return ans
 
@@ -1223,7 +1194,6 @@ def wkfl_zch(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 195), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 194)))
     ans += wkfl_bx(temp_ratings)
-    
 
     return ans
 
@@ -1262,7 +1232,6 @@ def wkfl_txr(part_ratings: PartRatings) -> int:
     # a<3258:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3257)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3258), part_ratings.a.r))
-    
 
     return ans
 
@@ -1273,7 +1242,6 @@ def wkfl_fls(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 748), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 747)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1305,7 +1273,6 @@ def wkfl_cs(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3188)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3189), part_ratings.x.r))
     ans += wkfl_dfq(temp_ratings)
-    
 
     return ans
 
@@ -1354,7 +1321,6 @@ def wkfl_grb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3473)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3474), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1385,7 +1351,6 @@ def wkfl_rxp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1495)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1496), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1401,7 +1366,6 @@ def wkfl_zbz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2837), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2836)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1412,7 +1376,6 @@ def wkfl_jvp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 586), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 585)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1423,7 +1386,6 @@ def wkfl_nqf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1569), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1568)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1439,7 +1401,6 @@ def wkfl_xr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 427), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 426)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1491,7 +1452,6 @@ def wkfl_bvg(part_ratings: PartRatings) -> int:
     # a<555:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 554)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 555), part_ratings.a.r))
-    
 
     return ans
 
@@ -1612,7 +1572,6 @@ def wkfl_gj(part_ratings: PartRatings) -> int:
     # s<2044:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2043)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2044), part_ratings.s.r))
-    
 
     return ans
 
@@ -1628,7 +1587,6 @@ def wkfl_jmf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 892), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 891)))
     ans += wkfl_jfc(temp_ratings)
-    
 
     return ans
 
@@ -1706,7 +1664,6 @@ def wkfl_fxz(part_ratings: PartRatings) -> int:
     # x<313:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 312)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 313), part_ratings.x.r))
-    
 
     return ans
 
@@ -1774,7 +1731,6 @@ def wkfl_tp(part_ratings: PartRatings) -> int:
     # a<657:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 656)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 657), part_ratings.a.r))
-    
 
     return ans
 
@@ -1789,7 +1745,6 @@ def wkfl_hb(part_ratings: PartRatings) -> int:
     # s>2312:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2313), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2312)))
-    
 
     return ans
 
@@ -1827,7 +1782,6 @@ def wkfl_vc(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 729), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 728)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1869,7 +1823,6 @@ def wkfl_xcs(part_ratings: PartRatings) -> int:
     # a<1588:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1587)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1588), part_ratings.a.r))
-    
 
     return ans
 
@@ -1889,7 +1842,6 @@ def wkfl_dh(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 873), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 872)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -1959,7 +1911,6 @@ def wkfl_dr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3217), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3216)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2041,7 +1992,6 @@ def wkfl_nxj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1667)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1668), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2056,7 +2006,6 @@ def wkfl_xsk(part_ratings: PartRatings) -> int:
     # s>3781:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3782), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3781)))
-    
 
     return ans
 
@@ -2081,7 +2030,6 @@ def wkfl_jft(part_ratings: PartRatings) -> int:
     # x>2411:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2412), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2411)))
-    
 
     return ans
 
@@ -2134,7 +2082,6 @@ def wkfl_rn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3163), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3162)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2225,7 +2172,6 @@ def wkfl_nxr(part_ratings: PartRatings) -> int:
     # a>359:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 360), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 359)))
-    
 
     return ans
 
@@ -2385,7 +2331,6 @@ def wkfl_bpr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3721), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3720)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2460,7 +2405,6 @@ def wkfl_znc(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1896)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1897), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2502,7 +2446,6 @@ def wkfl_vsz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1652)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1653), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2560,7 +2503,6 @@ def wkfl_rdk(part_ratings: PartRatings) -> int:
     # x<315:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 314)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 315), part_ratings.x.r))
-    
 
     return ans
 
@@ -2575,7 +2517,6 @@ def wkfl_tb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 331)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 332), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2586,7 +2527,6 @@ def wkfl_kkr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1674)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1675), part_ratings.m.r))
     ans += wkfl_dqp(temp_ratings)
-    
 
     return ans
 
@@ -2601,7 +2541,6 @@ def wkfl_lkj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1069), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1068)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2617,7 +2556,6 @@ def wkfl_jn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3885)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3886), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2644,7 +2582,6 @@ def wkfl_crr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3092)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3093), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -2718,7 +2655,6 @@ def wkfl_jl(part_ratings: PartRatings) -> int:
     # s<2760:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2759)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2760), part_ratings.s.r))
-    
 
     return ans
 
@@ -2754,7 +2690,6 @@ def wkfl_pdt(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2085), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2084)))
     ans += wkfl_rbk(temp_ratings)
-    
 
     return ans
 
@@ -2816,7 +2751,6 @@ def wkfl_xn(part_ratings: PartRatings) -> int:
     # s>2560:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2561), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2560)))
-    
 
     return ans
 
@@ -2826,7 +2760,6 @@ def wkfl_hnf(part_ratings: PartRatings) -> int:
     # m<2103:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2102)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2103), part_ratings.m.r))
-    
 
     return ans
 
@@ -2857,7 +2790,6 @@ def wkfl_mvm(part_ratings: PartRatings) -> int:
     # a<3112:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3111)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3112), part_ratings.a.r))
-    
 
     return ans
 
@@ -2871,7 +2803,6 @@ def wkfl_zcd(part_ratings: PartRatings) -> int:
     # x<2664:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2663)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2664), part_ratings.x.r))
-    
 
     return ans
 
@@ -2885,7 +2816,6 @@ def wkfl_ck(part_ratings: PartRatings) -> int:
     # x<717:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 716)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 717), part_ratings.x.r))
-    
 
     return ans
 
@@ -2949,7 +2879,6 @@ def wkfl_flk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3048)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3049), part_ratings.s.r))
     ans += wkfl_gvn(temp_ratings)
-    
 
     return ans
 
@@ -2989,7 +2918,6 @@ def wkfl_kd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 438)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 439), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3078,7 +3006,6 @@ def wkfl_llh(part_ratings: PartRatings) -> int:
     # a<841:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 840)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 841), part_ratings.a.r))
-    
 
     return ans
 
@@ -3097,7 +3024,6 @@ def wkfl_rd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1520), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1519)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3133,7 +3059,6 @@ def wkfl_sbh(part_ratings: PartRatings) -> int:
     # m<2126:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2125)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2126), part_ratings.m.r))
-    
 
     return ans
 
@@ -3191,7 +3116,6 @@ def wkfl_xz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2511), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2510)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3207,7 +3131,6 @@ def wkfl_vm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1748)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1749), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3227,7 +3150,6 @@ def wkfl_mv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3569), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3568)))
     ans += wkfl_nqf(temp_ratings)
-    
 
     return ans
 
@@ -3237,7 +3159,6 @@ def wkfl_znv(part_ratings: PartRatings) -> int:
     # m>3185:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3186), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3185)))
-    
 
     return ans
 
@@ -3285,7 +3206,6 @@ def wkfl_flh(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2933)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2934), part_ratings.x.r))
     ans += wkfl_vqg(temp_ratings)
-    
 
     return ans
 
@@ -3295,7 +3215,6 @@ def wkfl_stj(part_ratings: PartRatings) -> int:
     # x>736:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 737), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 736)))
-    
 
     return ans
 
@@ -3431,7 +3350,6 @@ def wkfl_dgf(part_ratings: PartRatings) -> int:
     # s<1048:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1047)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1048), part_ratings.s.r))
-    
 
     return ans
 
@@ -3458,7 +3376,6 @@ def wkfl_zj(part_ratings: PartRatings) -> int:
     # x>1836:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1837), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1836)))
-    
 
     return ans
 
@@ -3598,7 +3515,6 @@ def wkfl_rf(part_ratings: PartRatings) -> int:
     # a>1036:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1037), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1036)))
-    
 
     return ans
 
@@ -3624,7 +3540,6 @@ def wkfl_xzp(part_ratings: PartRatings) -> int:
     # a>2561:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2562), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2561)))
-    
 
     return ans
 
@@ -3687,7 +3602,6 @@ def wkfl_dd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1073)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1074), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3707,7 +3621,6 @@ def wkfl_nms(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2041)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2042), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3791,7 +3704,6 @@ def wkfl_krq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1857), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1856)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -3886,7 +3798,6 @@ def wkfl_jd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2443)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2444), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4030,7 +3941,6 @@ def wkfl_hcs(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2895)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2896), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4045,7 +3955,6 @@ def wkfl_vzt(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 407), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 406)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4076,7 +3985,6 @@ def wkfl_kqc(part_ratings: PartRatings) -> int:
     # m<856:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 855)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 856), part_ratings.m.r))
-    
 
     return ans
 
@@ -4108,7 +4016,6 @@ def wkfl_smp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3572), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3571)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4194,7 +4101,6 @@ def wkfl_hrs(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2937)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2938), part_ratings.m.r))
     ans += wkfl_rx(temp_ratings)
-    
 
     return ans
 
@@ -4209,7 +4115,6 @@ def wkfl_vs(part_ratings: PartRatings) -> int:
     # m<1556:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1555)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1556), part_ratings.m.r))
-    
 
     return ans
 
@@ -4240,7 +4145,6 @@ def wkfl_vg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1862), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1861)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4260,7 +4164,6 @@ def wkfl_hsz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3434)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3435), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4270,7 +4173,6 @@ def wkfl_fj(part_ratings: PartRatings) -> int:
     # m<1691:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1690)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1691), part_ratings.m.r))
-    
 
     return ans
 
@@ -4313,7 +4215,6 @@ def wkfl_lhl(part_ratings: PartRatings) -> int:
     # x>1684:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1685), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1684)))
-    
 
     return ans
 
@@ -4334,7 +4235,6 @@ def wkfl_clg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 488)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 489), part_ratings.a.r))
     ans += wkfl_xr(temp_ratings)
-    
 
     return ans
 
@@ -4555,7 +4455,6 @@ def wkfl_ptz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 276), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 275)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4616,7 +4515,6 @@ def wkfl_lx(part_ratings: PartRatings) -> int:
     # s<1289:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1288)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1289), part_ratings.s.r))
-    
 
     return ans
 
@@ -4627,7 +4525,6 @@ def wkfl_pf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2170), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2169)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4663,7 +4560,6 @@ def wkfl_kgp(part_ratings: PartRatings) -> int:
     # a>787:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 788), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 787)))
-    
 
     return ans
 
@@ -4751,7 +4647,6 @@ def wkfl_dtm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1064), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1063)))
     ans += wkfl_fzt(temp_ratings)
-    
 
     return ans
 
@@ -4789,7 +4684,6 @@ def wkfl_gn(part_ratings: PartRatings) -> int:
     # s<313:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 312)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 313), part_ratings.s.r))
-    
 
     return ans
 
@@ -4809,7 +4703,6 @@ def wkfl_hng(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1866), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1865)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4856,7 +4749,6 @@ def wkfl_dqn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 706)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 707), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4927,7 +4819,6 @@ def wkfl_mr(part_ratings: PartRatings) -> int:
     # x>1621:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1622), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1621)))
-    
 
     return ans
 
@@ -4938,7 +4829,6 @@ def wkfl_cgz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 333)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 334), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -4965,7 +4855,6 @@ def wkfl_rx(part_ratings: PartRatings) -> int:
     # s<3802:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3801)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3802), part_ratings.s.r))
-    
 
     return ans
 
@@ -4979,7 +4868,6 @@ def wkfl_ljj(part_ratings: PartRatings) -> int:
     # a>1322:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1323), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1322)))
-    
 
     return ans
 
@@ -5002,7 +4890,6 @@ def wkfl_sf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 827)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 828), part_ratings.x.r))
     ans += wkfl_ffd(temp_ratings)
-    
 
     return ans
 
@@ -5072,7 +4959,6 @@ def wkfl_hkq(part_ratings: PartRatings) -> int:
     # m<1595:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1594)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1595), part_ratings.m.r))
-    
 
     return ans
 
@@ -5110,7 +4996,6 @@ def wkfl_bfh(part_ratings: PartRatings) -> int:
     # x>3013:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3014), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3013)))
-    
 
     return ans
 
@@ -5126,7 +5011,6 @@ def wkfl_lk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 148), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 147)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5184,7 +5068,6 @@ def wkfl_rbk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3209), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3208)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5199,7 +5082,6 @@ def wkfl_bst(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 964)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 965), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5267,7 +5149,6 @@ def wkfl_vlt(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 807)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 808), part_ratings.a.r))
     ans += wkfl_dqn(temp_ratings)
-    
 
     return ans
 
@@ -5278,7 +5159,6 @@ def wkfl_pgc(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3071), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3070)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5300,7 +5180,6 @@ def wkfl_szx(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 370)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 371), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5327,7 +5206,6 @@ def wkfl_cd(part_ratings: PartRatings) -> int:
     # m>3395:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3396), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3395)))
-    
 
     return ans
 
@@ -5431,7 +5309,6 @@ def wkfl_gv(part_ratings: PartRatings) -> int:
     # a>73:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 74), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 73)))
-    
 
     return ans
 
@@ -5442,7 +5319,6 @@ def wkfl_bjb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 781)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 782), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5531,7 +5407,6 @@ def wkfl_dj(part_ratings: PartRatings) -> int:
     # a<479:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 478)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 479), part_ratings.a.r))
-    
 
     return ans
 
@@ -5542,7 +5417,6 @@ def wkfl_ms(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1530)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1531), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5607,7 +5481,6 @@ def wkfl_jxs(part_ratings: PartRatings) -> int:
     # x>1442:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1443), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1442)))
-    
 
     return ans
 
@@ -5698,7 +5571,6 @@ def wkfl_nh(part_ratings: PartRatings) -> int:
     # m>1122:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1123), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1122)))
-    
 
     return ans
 
@@ -5803,7 +5675,6 @@ def wkfl_xg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1604)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1605), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5842,7 +5713,6 @@ def wkfl_vt(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2163)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2164), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -5942,7 +5812,6 @@ def wkfl_sfh(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 823)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 824), part_ratings.s.r))
     ans += wkfl_jx(temp_ratings)
-    
 
     return ans
 
@@ -5975,7 +5844,6 @@ def wkfl_vmt(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1061), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1060)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6051,7 +5919,6 @@ def wkfl_tz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 737), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 736)))
     ans += wkfl_lxc(temp_ratings)
-    
 
     return ans
 
@@ -6066,7 +5933,6 @@ def wkfl_ns(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1997), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1996)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6085,7 +5951,6 @@ def wkfl_zs(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2891), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2890)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6105,7 +5970,6 @@ def wkfl_hjv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2076)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2077), part_ratings.x.r))
     ans += wkfl_vj(temp_ratings)
-    
 
     return ans
 
@@ -6225,7 +6089,6 @@ def wkfl_lm(part_ratings: PartRatings) -> int:
     # s>1314:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1315), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1314)))
-    
 
     return ans
 
@@ -6275,7 +6138,6 @@ def wkfl_ngr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3140), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3139)))
     ans += wkfl_vf(temp_ratings)
-    
 
     return ans
 
@@ -6286,7 +6148,6 @@ def wkfl_sr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 800)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 801), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6375,7 +6236,6 @@ def wkfl_hct(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2515), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2514)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6425,7 +6285,6 @@ def wkfl_zfj(part_ratings: PartRatings) -> int:
     # s>799:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 800), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 799)))
-    
 
     return ans
 
@@ -6452,7 +6311,6 @@ def wkfl_crh(part_ratings: PartRatings) -> int:
     # a>415:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 416), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 415)))
-    
 
     return ans
 
@@ -6472,7 +6330,6 @@ def wkfl_ddq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 491)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 492), part_ratings.a.r))
     ans += wkfl_tx(temp_ratings)
-    
 
     return ans
 
@@ -6559,7 +6416,6 @@ def wkfl_jsk(part_ratings: PartRatings) -> int:
     # s<1160:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1159)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1160), part_ratings.s.r))
-    
 
     return ans
 
@@ -6586,7 +6442,6 @@ def wkfl_qm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2874), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2873)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6613,7 +6468,6 @@ def wkfl_xj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 464), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 463)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6756,7 +6610,6 @@ def wkfl_xqj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 590)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 591), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6789,7 +6642,6 @@ def wkfl_bx(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3796)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3797), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6850,7 +6702,6 @@ def wkfl_pbd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1956), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1955)))
     ans += wkfl_xqj(temp_ratings)
-    
 
     return ans
 
@@ -6877,7 +6728,6 @@ def wkfl_jkd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 383), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 382)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6896,7 +6746,6 @@ def wkfl_jdj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1450), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1449)))
     ans += wkfl_jft(temp_ratings)
-    
 
     return ans
 
@@ -6916,7 +6765,6 @@ def wkfl_sh(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 844), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 843)))
     ans += wkfl_njp(temp_ratings)
-    
 
     return ans
 
@@ -6942,7 +6790,6 @@ def wkfl_rz(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 149), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 148)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -6961,7 +6808,6 @@ def wkfl_hv(part_ratings: PartRatings) -> int:
     # x>1545:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1546), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1545)))
-    
 
     return ans
 
@@ -6997,7 +6843,6 @@ def wkfl_fmv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 3301), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 3300)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7048,7 +6893,6 @@ def wkfl_fv(part_ratings: PartRatings) -> int:
     # s<804:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 803)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 804), part_ratings.s.r))
-    
 
     return ans
 
@@ -7070,7 +6914,6 @@ def wkfl_tsq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1367)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1368), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7184,7 +7027,6 @@ def wkfl_vqg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2755), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2754)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7204,7 +7046,6 @@ def wkfl_nbm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1529)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1530), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7266,7 +7107,6 @@ def wkfl_ts(part_ratings: PartRatings) -> int:
     # a>383:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 384), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 383)))
-    
 
     return ans
 
@@ -7298,7 +7138,6 @@ def wkfl_dk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3327), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3326)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7313,7 +7152,6 @@ def wkfl_hhr(part_ratings: PartRatings) -> int:
     # m>547:R
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 548), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 547)))
-    
 
     return ans
 
@@ -7441,7 +7279,6 @@ def wkfl_cnq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 115)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 116), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7472,7 +7309,6 @@ def wkfl_xrx(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3391), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3390)))
     ans += wkfl_hnf(temp_ratings)
-    
 
     return ans
 
@@ -7503,7 +7339,6 @@ def wkfl_rl(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 450)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 451), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7523,7 +7358,6 @@ def wkfl_kq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3795)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3796), part_ratings.s.r))
     ans += wkfl_xs(temp_ratings)
-    
 
     return ans
 
@@ -7606,7 +7440,6 @@ def wkfl_gc(part_ratings: PartRatings) -> int:
     # s<3806:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 3805)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 3806), part_ratings.s.r))
-    
 
     return ans
 
@@ -7705,7 +7538,6 @@ def wkfl_lkb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 830)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 831), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -7789,7 +7621,6 @@ def wkfl_lsf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1351), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1350)))
     ans += wkfl_rlg(temp_ratings)
-    
 
     return ans
 
@@ -7830,7 +7661,6 @@ def wkfl_rs(part_ratings: PartRatings) -> int:
     # a<1026:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1025)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1026), part_ratings.a.r))
-    
 
     return ans
 
@@ -7850,7 +7680,6 @@ def wkfl_cbx(part_ratings: PartRatings) -> int:
     # x>1386:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1387), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1386)))
-    
 
     return ans
 
@@ -7894,7 +7723,6 @@ def wkfl_hr(part_ratings: PartRatings) -> int:
     # x>1519:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1520), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1519)))
-    
 
     return ans
 
@@ -7954,7 +7782,6 @@ def wkfl_fn(part_ratings: PartRatings) -> int:
     # s<1063:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1062)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1063), part_ratings.s.r))
-    
 
     return ans
 
@@ -7970,7 +7797,6 @@ def wkfl_cq(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1567)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1568), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8099,7 +7925,6 @@ def wkfl_jbm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 175), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 174)))
     ans += wkfl_ck(temp_ratings)
-    
 
     return ans
 
@@ -8119,7 +7944,6 @@ def wkfl_ps(part_ratings: PartRatings) -> int:
     # a>936:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 937), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 936)))
-    
 
     return ans
 
@@ -8259,7 +8083,6 @@ def wkfl_blk(part_ratings: PartRatings) -> int:
     # a>736:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 737), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 736)))
-    
 
     return ans
 
@@ -8302,7 +8125,6 @@ def wkfl_xtq(part_ratings: PartRatings) -> int:
     # x<1290:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1289)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1290), part_ratings.x.r))
-    
 
     return ans
 
@@ -8313,7 +8135,6 @@ def wkfl_bdm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2035)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2036), part_ratings.x.r))
     ans += wkfl_shf(temp_ratings)
-    
 
     return ans
 
@@ -8333,7 +8154,6 @@ def wkfl_rlg(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1630)))
     part_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 1631), part_ratings.m.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8353,7 +8173,6 @@ def wkfl_dv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2330)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2331), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8368,7 +8187,6 @@ def wkfl_bd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 243), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 242)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8495,7 +8313,6 @@ def wkfl_xp(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2188)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2189), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8506,7 +8323,6 @@ def wkfl_rtf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1524), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1523)))
     ans += wkfl_nf(temp_ratings)
-    
 
     return ans
 
@@ -8546,7 +8362,6 @@ def wkfl_vcf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3003)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3004), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8557,7 +8372,6 @@ def wkfl_hjl(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 876)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 877), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8577,7 +8391,6 @@ def wkfl_hgb(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 3374), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 3373)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8664,7 +8477,6 @@ def wkfl_rbc(part_ratings: PartRatings) -> int:
     # s>2207:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2208), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2207)))
-    
 
     return ans
 
@@ -8684,7 +8496,6 @@ def wkfl_hzs(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2000), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 1999)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8695,7 +8506,6 @@ def wkfl_snd(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 2159)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 2160), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8805,7 +8615,6 @@ def wkfl_ql(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1449)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1450), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8820,7 +8629,6 @@ def wkfl_dxp(part_ratings: PartRatings) -> int:
     # a>2362:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2363), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2362)))
-    
 
     return ans
 
@@ -8860,7 +8668,6 @@ def wkfl_sqf(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 2472), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 2471)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8880,7 +8687,6 @@ def wkfl_qhk(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2771), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2770)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -8937,7 +8743,6 @@ def wkfl_pd(part_ratings: PartRatings) -> int:
     # x>1937:R
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1938), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1937)))
-    
 
     return ans
 
@@ -8951,7 +8756,6 @@ def wkfl_hh(part_ratings: PartRatings) -> int:
     # s>1964:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1965), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1964)))
-    
 
     return ans
 
@@ -8961,7 +8765,6 @@ def wkfl_zdc(part_ratings: PartRatings) -> int:
     # a<1650:R
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1649)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1650), part_ratings.a.r))
-    
 
     return ans
 
@@ -8999,7 +8802,6 @@ def wkfl_snc(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 782)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 783), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9019,7 +8821,6 @@ def wkfl_lrv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 920), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 919)))
     ans += wkfl_xcs(temp_ratings)
-    
 
     return ans
 
@@ -9075,7 +8876,6 @@ def wkfl_bpj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1034), part_ratings.x.r))
     part_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1033)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9090,7 +8890,6 @@ def wkfl_nm(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1395)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1396), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9122,7 +8921,6 @@ def wkfl_vv(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, m=Range(max(part_ratings.m.l, 3802), part_ratings.m.r))
     part_ratings = dataclasses.replace(part_ratings, m=Range(part_ratings.m.l, min(part_ratings.m.r, 3801)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9155,7 +8953,6 @@ def wkfl_px(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 2980)))
     part_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 2981), part_ratings.s.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9188,7 +8985,6 @@ def wkfl_tr(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 2507)))
     part_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 2508), part_ratings.a.r))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9221,7 +9017,6 @@ def wkfl_zlj(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, a=Range(max(part_ratings.a.l, 1214), part_ratings.a.r))
     part_ratings = dataclasses.replace(part_ratings, a=Range(part_ratings.a.l, min(part_ratings.a.r, 1213)))
     ans += temp_ratings.total
-    
 
     return ans
 
@@ -9355,7 +9150,6 @@ def wkfl_nf(part_ratings: PartRatings) -> int:
     # s>1568:R
     temp_ratings = dataclasses.replace(part_ratings, s=Range(max(part_ratings.s.l, 1569), part_ratings.s.r))
     part_ratings = dataclasses.replace(part_ratings, s=Range(part_ratings.s.l, min(part_ratings.s.r, 1568)))
-    
 
     return ans
 
@@ -9366,7 +9160,6 @@ def wkfl_knn(part_ratings: PartRatings) -> int:
     temp_ratings = dataclasses.replace(part_ratings, x=Range(part_ratings.x.l, min(part_ratings.x.r, 1324)))
     part_ratings = dataclasses.replace(part_ratings, x=Range(max(part_ratings.x.l, 1325), part_ratings.x.r))
     ans += temp_ratings.total
-    
 
     return ans
 
