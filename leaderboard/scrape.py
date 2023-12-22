@@ -3,7 +3,6 @@ import requests
 from dataclasses import dataclass
 from datetime import timedelta
 from collections import defaultdict
-import aocd
 
 CACHE_DIR = (Path("~") / ".cache" / "aoc_leaderboard").expanduser()
 DATA_DIR = Path(__file__).parent / "data"
@@ -25,7 +24,7 @@ def get_raw_leaderbaord(year: int, day: int) -> str | None:
         return cache_path.read_text()
     print("Downloading statement")
 
-    r = requests.get(get_url(year, day), headers={"User-Agent": "vstrimaitis@gmail.com"})
+    r = requests.get(get_url(year, day), headers={"User-Agent": "@vstrimaitis"})
     if r.status_code == 404:
         return None
     html = r.content.decode("utf-8")
