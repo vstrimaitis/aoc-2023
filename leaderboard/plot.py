@@ -36,7 +36,7 @@ if __name__ == "__main__":
             linewidth = 3
             plot_text = lambda: plt.text(
                 xs[-1],
-                ys[-1]+5,
+                ys[-1]+10,
                 f"{user}: {ys[-1]}",
                 horizontalalignment="right",
                 verticalalignment="bottom",
@@ -47,8 +47,9 @@ if __name__ == "__main__":
         plot_text()
     plt.xlabel("Day")
     plt.ylabel("Position")
-    plt.ylim(bottom=0, top=100)
-    plt.yticks([1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+    LEADERBOARD_SIZE = 200
+    plt.ylim(bottom=0, top=LEADERBOARD_SIZE)
+    plt.yticks([1, *range(10, LEADERBOARD_SIZE+1, 10)])
     plt.gca().invert_yaxis()
     plt.tight_layout()
     plt.margins(x=0)
