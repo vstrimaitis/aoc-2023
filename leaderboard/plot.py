@@ -45,6 +45,8 @@ if __name__ == "__main__":
             )
         plt.plot(xs, ys, alpha=alpha, linewidth=linewidth)
         plot_text()
+    plt.axhline(y=50, color="red", linestyle="dashed")
+    plt.axhline(y=100, color="black", linestyle="dashed")
     plt.xlabel("Day")
     plt.ylabel("Position")
     LEADERBOARD_SIZE = 200
