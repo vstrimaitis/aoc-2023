@@ -33,27 +33,6 @@ def calc_longest(g, n, m, curr, goal, d=0, visited=set()):
     visited.remove(curr)
     return ans+1
 
-best_so_far = 0
-def calc_longest2(g, n, m, curr, goal, d=0, visited=set()):
-    if curr == goal:
-        global best_so_far
-        if d > best_so_far:
-            best_so_far = d
-            print("reached goal in ", d)
-        return d
-    if curr in visited:
-        return -10**100
-    visited.add(curr)
-    i, j = curr
-    if not (0 <= i < n and 0 <= j < m):
-        return -10**100
-    if g[i][j] == "#":
-        return -10**100
-    ans = -10**100
-    for ii, jj in get_neigh_coords(g, i, j, DIRS_4):
-        ans = max(ans, calc_longest2(g, n, m, (ii, jj), goal,d+1, visited))
-    visited.remove(curr)
-    return ans
 best_so_far3 = 0
 def calc_longest3(adj, curr, goal, d=0, visited=set()):
     if curr == goal:
@@ -71,41 +50,61 @@ def calc_longest3(adj, curr, goal, d=0, visited=set()):
     visited.remove(curr)
     return ans
 
-def condense(g, n, m, curr, goal, pc, adj, d=0, p=(-1,-1), visited=set()):
-    if curr == goal:
-        adj[curr].append((pc, d))
-        adj[pc].append((curr, d))
-        return
-    neighs = []
-    visited.add(curr)
-    i, j = curr
-    for ii, jj in get_neigh_coords(g, i, j, DIRS_4):
-        if (ii, jj) == p:
-            continue
-        if not (0 <= ii < n and 0 <= jj < m):
-            continue
-        if g[ii][jj] == "#":
-            continue
-        if (ii, jj) in visited:
-            continue
-        neighs.append((ii, jj))
-    if len(neighs) == 0:
-        return -10**100
-    elif len(neighs) == 1:
-        condense(g, n, m, neighs[0], goal, pc, adj, d+1, curr)
-    else:
-        # found choke point
-        adj[pc].append((curr, d))
-        adj[curr].append((pc, d))
-        for neigh in neighs:
-            condense(g, n, m, neigh, goal, curr, adj, 1, curr)
-    visited.remove(curr)
+def find_split_points(g, n, m):
+    ans = []
+    for j in range(m):
+        if g[0][j] == ".":
+            ans.append((0, j))
+        if g[n-1][j] == ".":
+            ans.append((n-1, j))
+    for i in range(n):
+        for j in range(m):
+            if g[i][j] == ".":
+                cnt = 0
+                for ii, jj in get_neigh_coords(g, i, j,DIRS_4):
+                    if g[ii][jj] != "#":
+                        cnt += 1
+                if cnt > 2:
+                    ans.append((i, j))
+    return set(ans)
 
+def calc_dist(g, n, m, p1, p2, split_points):
+    q = deque()
+    dists = dict()
+    q.append(p1)
+    dists[p1] = 0
+    while q:
+        u = q.popleft()
+        if u == p2:
+            return dists[u]
+        if u != p1 and  u in split_points:
+            continue
+        neighs = []
+        i, j = u
+        for ii, jj in get_neigh_coords(g, i, j, DIRS_4):
+            if (ii, jj) in dists:
+                continue
+            if not (0 <= ii < n and 0 <= jj < m):
+                continue
+            if g[ii][jj] == "#":
+                continue
+            neighs.append((ii, jj))
+        if len(neighs) == 0:
+            assert False
+        elif len(neighs) == 1:
+            dists[neighs[0]] = dists[u] + 1
+            q.append(neighs[0])
+        else:
+            if u == p1:
+                for v in neighs:
+                    dists[v] = dists[u] + 1
+                    q.append(v)
+            else:
+                return None
+    return None
 
-with PuzzleContext(year=2023, day=23) as ctx:
-    ans1, ans2 = None, None
-
-    g, n, m = to_grid(ctx.data)
+def solve1(data: str) -> int:
+    g, n, m = to_grid(data)
 
     start, goal = None, None
     for j in range(m):
@@ -116,43 +115,33 @@ with PuzzleContext(year=2023, day=23) as ctx:
     assert start is not None 
     assert goal is not None
 
-    # ans1 = calc_longest(g, n, m, start, goal)
-    # print(ans1)
+    return calc_longest(g, n, m, start, goal)
 
-    # ctx.submit(1, str(ans1) if ans1 else None)
-
-    # ans2 = calc_longest2(g, n, m, start, goal)
-    # ctx.submit(2, str(ans2) if ans2 else None)  # <- this finished after a long time
-
-    # for i in range(n):
-    #     for j in range(m):
-    #         if g[i][j] == ".":
-    #             cnt = 0
-    #             for ii, jj in get_neigh_coords(g, i, j,DIRS_4):
-    #                 if g[ii][jj] != "#":
-    #                     cnt += 1
-    #             if cnt > 2:
-    #                 print(i, j)
-    #                 for ii in range(i-1, i+2):
-    #                     for jj in range(j-1, j+2):
-    #                         print(g[ii][jj],end="")
-    #                     print()
-    #                 print()
-
+def solve2(data: str) -> int:
+    g, n, m = to_grid(data)
+    splits = find_split_points(g, n, m)
     adj = defaultdict(lambda: [])
-    condense(g, n, m, start, goal, start, adj)
-    for k, v in adj.items():
-        print(k, v)
-    ans2 = calc_longest3(adj, start, goal)
-    print(ans2)
+    for a in splits:
+        for b in splits:
+            if a != b:
+                d = calc_dist(g, n, m, a, b, splits)
+                if d is not None:
+                    adj[a].append((b, d))
 
 
-    # new_adj = defaultdict(lambda: [])
-    # seen = set()
-    # for u, vs in adj.items():
-    #     seen.add(u)
-    #     for v in vs:
-    #         if v in seen:
-    #             continue
-    #         new_adj[u].add(v)
-    
+    start, goal = None, None
+    for j in range(m):
+        if g[0][j] == ".":
+            start = (0, j)
+        if g[n-1][j] == ".":
+            goal = (n-1, j)
+    assert start is not None 
+    assert goal is not None
+    return calc_longest3(adj, start, goal)
+
+with PuzzleContext(year=2023, day=23) as ctx:
+    ans1 = solve1(ctx.data)
+    ctx.submit(1, str(ans1))
+
+    ans2 = solve2(ctx.data)
+    ctx.submit(2, str(ans2))
