@@ -29,22 +29,22 @@ if __name__ == "__main__":
         ys = [results[x].get(user, None) for x in xs]
         alpha = 0.3
         linewidth = 1
-        plot_text = lambda: None
+        color = None
         # TODO: possible to plot multiple users if needed
         if user in ["vstrimaitis"]:
             alpha = 1
             linewidth = 3
-            plot_text = lambda: plt.text(
+            color = "blue"
+            plt.text(
                 xs[-1],
                 ys[-1]+10,
                 f"{user}: {ys[-1]}",
                 horizontalalignment="right",
                 verticalalignment="bottom",
-                color=plt.gca().get_lines()[-1].get_c(),
+                color=color,
                 weight="bold"
             )
-        plt.plot(xs, ys, alpha=alpha, linewidth=linewidth)
-        plot_text()
+        plt.plot(xs, ys, alpha=alpha, linewidth=linewidth, color=color)
     plt.axhline(y=50, color="red", linestyle="dashed")
     plt.axhline(y=100, color="black", linestyle="dashed")
     plt.xlabel("Day")
